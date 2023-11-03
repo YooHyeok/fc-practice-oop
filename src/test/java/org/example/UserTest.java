@@ -46,4 +46,23 @@ class UserTest {
         // then : 결과
         assertThat(user.getPassword()).isNull();
     }
+
+    /**
+     * 두 케이스의 낮은 결합도 구현체 인스턴스 대신 람다식 적용
+     */
+    @DisplayName("패스워드가 요구사항에 부합하지 않아 초기화가 되지 않는다.")
+    @Test
+    void passwordTest3() {
+        // given : user객체가 주어졌다
+        User userA = new User();
+        User userB = new User();
+
+        // when : 메소드를 호출했을 때
+        userA.initPassword(() -> "12345678"); //8글자 고정
+        userB.initPassword(() -> "ab"); //2글자 고정
+
+        // then : 결과
+        assertThat(userA.getPassword()).isNotNull();
+        assertThat(userB.getPassword()).isNull();
+    }
 }

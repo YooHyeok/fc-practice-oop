@@ -15,9 +15,12 @@ class UserTest {
         User user = new User();
 
         // when : 메소드를 호출했을 때
-        user.initPassword();
+//        user.initPassword();
+//        user.initPassword(new RandomPasswordGenerator());
+        user.initPassword(new CorrectFixedPasswordGenerator());
 
         // then : 결과
         assertThat(user.getPassword()).isNotNull();
     }
+
 }

@@ -16,4 +16,8 @@ public class User {
             this.password = randomPassword;
         }
     }
+
+    public String getPassword() {
+        return password;
+    }
 }

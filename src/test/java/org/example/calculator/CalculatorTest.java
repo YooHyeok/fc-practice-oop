@@ -50,6 +50,36 @@ public class CalculatorTest {
         assertThat(calculateResult).isEqualTo(result);
     }
 
+    /**
+     * Enum 활용
+     * @param operand1
+     * @param operator
+     * @param operand2
+     * @param result
+     */
+    @DisplayName("사칙 연산을 수행한다.")
+    @ParameterizedTest
+    @MethodSource("fomulaAndResult")
+    void arithmeticCalculatorEnumTest(int operand1, String operator, int operand2, int result) {
+        int calculateResult = Calculator.arithmateCalculate(operand1, operator, operand2);
+        assertThat(calculateResult).isEqualTo(result);
+    }
+
+    /**
+     * Interface & 구현체 활용
+     * @param operand1
+     * @param operator
+     * @param operand2
+     * @param result
+     */
+    @DisplayName("사칙 연산을 수행한다.")
+    @ParameterizedTest
+    @MethodSource("fomulaAndResult")
+    void arithmeticCalculatorImplTest(int operand1, String operator, int operand2, int result) {
+        int calculateResult = Calculator.arithmateImplCalculate(operand1, operator, operand2);
+        assertThat(calculateResult).isEqualTo(result);
+    }
+
     private static Stream<Arguments> fomulaAndResult() {
         return Stream.of(
                 arguments(1, "+", 2, 3),

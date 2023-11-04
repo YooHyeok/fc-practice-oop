@@ -8,6 +8,12 @@ public class Calculator {
         if (operator.equals("-")) {
             return operand1 - operand2;
         }
+        if (operator.equals("*")) {
+            return operand1 * operand2;
+        }
+        if (operator.equals("/")) {
+            return operand1 / operand2;
+        }
         return 0;
     }
 }

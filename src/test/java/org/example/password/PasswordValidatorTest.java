@@ -34,9 +34,8 @@ public class PasswordValidatorTest {
      * @param password
      */
     @DisplayName("비밀번호가 8자 미만 또는 12자 초과하는 경우 IllegalArgumentException 예외가 발생한다.")
-    @ParameterizedTest //
+    @ParameterizedTest
     @ValueSource(strings = {"1234567", "1234567891234"})
-    @Test
     void validatePasswordTest2(String password) { // ValueSrouce에 지정한 strings 값들이 차례로 파라미터로 사용된다.
         assertThatCode(() -> PasswordValdator.validate(password))
                 .isInstanceOf(IllegalArgumentException.class) // 익셉션 발생시 발생한 익셉션 클래스의 타입 비교

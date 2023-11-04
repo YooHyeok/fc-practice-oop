@@ -89,6 +89,16 @@ public class CalculatorTest {
                 .hasMessage("0으로는 나눌 수 없습니다.");
     }
 
+
+    @DisplayName("0또는 음수를 전달할 경우 IllegalArgument 예외를 발생시킨다.")
+    @ParameterizedTest
+    @MethodSource("fomulaAndResult")
+    void calculatorExceptionTest2() {
+        assertThatCode(() -> Calculator.arithmateImplCalculate(new PositiveNumber(10), "/", new PositiveNumber(0)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("0또는 음수를 전달할 수 없습니다.");
+    }
+
     private static Stream<Arguments> fomulaAndResult() {
         return Stream.of(
                 arguments(1, "+", 2, 3),

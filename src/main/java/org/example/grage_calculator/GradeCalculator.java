@@ -31,8 +31,17 @@ public class GradeCalculator {
 
         /* (credit * grade) 총 합계 */
         double multipliedCreditCourseGrade = 0;
-        for (Course course: this.courses) {
+        /*for (Course course: this.courses) {
             multipliedCreditCourseGrade += course.getCredit() * course.getGradeToNumber();
+        }*/
+
+        /*
+         * 응집도를 높힘으로써 학점수 * 교과목 평균 연산에 대한 수정이 필요할때 한곳에서만 수정할 수 있도록.
+         * 만약 해당 로직이 여러곳에서 중복으로 사용하고 있다면 일일히 찾아가서 수정해야함.
+         * 리팩토링: course객체의 getter함수를 통해 연산 작업을 위임
+         */
+        for (Course course: this.courses) {
+            multipliedCreditCourseGrade += course.getMultipliedCreditCourseGrade();
         }
 
         /* 수강신청 총 학점 수 */
@@ -41,4 +50,6 @@ public class GradeCalculator {
                 .sum();
         return multipliedCreditCourseGrade / totalCompletedCredit;
     }
+
+
 }

@@ -48,4 +48,12 @@ public class Course {
         }
         return grade; // 없는 성적ㅇ느 0점으로 처리 (D부터 F)
     }
+
+    /**
+     * (학점수 * 교과목 평점)의 합계
+     * @return : credit * grageToNumber
+     */
+    public double getMultipliedCreditCourseGrade() {
+        return this.credit* this.getGradeToNumber();
+    }
 }

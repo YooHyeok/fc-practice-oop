@@ -23,7 +23,6 @@ public class GradeCalculator {
             this.courses.add(course);
         }
         this.coursess = new Courses(courses); //1급 컬렉션에게 위임
-
     }
 
     /**

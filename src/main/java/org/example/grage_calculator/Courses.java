@@ -27,11 +27,17 @@ public class Courses {
     }
 
     public double multipliyCreditCourseGrade() {
-        double multipliedCreditCourseGrade = 0;
+        /*double multipliedCreditCourseGrade = 0;
         for (Course course: this.courses) {
             multipliedCreditCourseGrade += course.getMultipliedCreditCourseGrade();
         }
-        return multipliedCreditCourseGrade;
+        return multipliedCreditCourseGrade;*/
+
+        /**
+         * 리팩토링 - stream 메소드 참조 누적합
+         */
+        return courses.stream().mapToDouble(Course::getMultipliedCreditCourseGrade)
+                .sum();
     }
 
     public int calcutateTotalCompletedCredit() {

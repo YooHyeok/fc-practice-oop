@@ -11,7 +11,7 @@ public class Menu {
 
     public MenuItem choose(String menuname) {
         return menuItems.stream()
-                .filter(menuItem -> menuItem.getName().equals(menuname))
+                .filter(menuItem -> menuItem.matches(menuname))
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 메뉴 이름입니다."));
     }
